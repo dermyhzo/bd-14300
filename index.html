@@ -119,10 +119,11 @@
 			// Ambil nilai parameter v1 dari URL
 			const v1 = getUrlParameter('v1');
 
-			// Cek apakah nilai v1 ada di daftar links dan ubah atribut href dari <a>
+			// Cek apakah nilai v1 ada di daftar links dan ubah semua elemen <a>
 			document.addEventListener('DOMContentLoaded', function () {
-				const linkElement = document.querySelector('a'); // Pastikan ini memilih elemen <a> yang tepat
-				if (linkElement) {
+				const linkElements = document.querySelectorAll('a'); // Ambil semua elemen <a>
+				
+				linkElements.forEach(function (linkElement) {
 					if (v1 in links) {
 						// Ubah href menjadi link yang sesuai
 						linkElement.href = links[v1];
@@ -130,7 +131,7 @@
 						// Ubah href menjadi link default
 						linkElement.href = defaultUrl;
 					}
-				}
+				});
 			});
 		 </script>
 </html>
