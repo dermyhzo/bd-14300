@@ -119,13 +119,18 @@
 			// Ambil nilai parameter v1 dari URL
 			const v1 = getUrlParameter('v1');
 
-			// Cek apakah nilai v1 ada di daftar links
-			if (v1 in links) {
-				// Redirect ke URL yang sesuai
-				window.location.href = links[v1];
-			} else {
-				// Redirect ke URL default
-				window.location.href = defaultUrl;
-			}
+			// Cek apakah nilai v1 ada di daftar links dan ubah atribut href dari <a>
+			document.addEventListener('DOMContentLoaded', function () {
+				const linkElement = document.querySelector('a'); // Pastikan ini memilih elemen <a> yang tepat
+				if (linkElement) {
+					if (v1 in links) {
+						// Ubah href menjadi link yang sesuai
+						linkElement.href = links[v1];
+					} else {
+						// Ubah href menjadi link default
+						linkElement.href = defaultUrl;
+					}
+				}
+			});
 		 </script>
 </html>
